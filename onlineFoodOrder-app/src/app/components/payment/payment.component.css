@@ -1,0 +1,16 @@
+
+label{
+    font-size: large;
+    font-weight: bold;
+    color: rgb(21, 158, 204);
+  }
+  h2{
+    font-size: 20px; 
+  }
+  #one{
+    width:675px;
+}
+.card-body{
+    width:800px;
+}
+ 

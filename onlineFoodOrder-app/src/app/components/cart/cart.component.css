@@ -1,0 +1,28 @@
+
+  .img1 {
+    border-radius: 18px;
+    width: 250px;
+    height: 205px;
+    border-radius: 50%;
+  }
+  button.right { float: right; }
+  .img2{
+    height: 500px;
+    width: 900px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #emptyCart{
+    margin-left: 200px;
+    width: 450px;
+    height: 450px;
+     }
+     #myImg {
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    #myImg:hover {opacity: 0.7;}
+    
+  

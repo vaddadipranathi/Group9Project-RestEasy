@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background: linear-gradient(to right,blue, white);">
+    <a class="navbar-brand mb-0 h1" href="#" style="color:white">RestEasy</a>
+    <div class="container-fluid">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" routerLink="Adigas"
+                        style="color:white">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false" style="color:white">
+                        Restuarants
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="Adigas">Adigas</a></li>
+                        <li><a class="dropdown-item" routerLink="Rotighar">RotiGhar</a></li>
+                        <li><a class="dropdown-item" routerLink="PunjabiRasoi">PunjabiRasoi</a></li>
+                        <li><a class="dropdown-item" routerLink="Udipi">Udupi</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <form class="d-flex">
+
+
+                        <input placeholder="enter food name" id="foodName" class="form-control me-2" size="40"
+                            [(ngModel)]="foodName" name="foodName"
+                            [ngClass]="{ 'is-invalid': search.get('foodName').touched && search.get('foodName').invalid }"
+                            formControlName="foodName" #name />
+                        <span class="invalid-feedback">
+                            <span *ngIf="search.get('foodName').hasError('required')">foodName can't be
+                                blank.</span>
+                        </span>
+
+
+
+
+                        <i class="fa fa-search" style="font-size:34px;color:blue" routerLink="/search"
+                            (click)="searchFood(name.value)"></i>
+                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                    </form>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <button class="btn btn-primary btn-sm" (click)="redirectCart()">
+        <i (click)="redirectCart()" class="fa fa-shopping-cart" style="font-size:25px ;color:white">
+        </i>
+    </button>&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="btn btn-primary my-2 my-sm-0" *ngIf="isTokenPresent()==false" routerLink="register">
+        Signup
+    </div> &nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="btn btn-primary my-2 my-sm-0" *ngIf="isTokenPresent()==false" routerLink="login"
+        (click)="getCustomerEmail()">
+        Login
+    </div>
+    <div class="col-sm-3"><span *ngIf="isTokenPresent()==true" class="welcome-text ">Welcome
+            {{credentialService.customerEmail}} </span></div>
+    <button *ngIf="isTokenPresent()==true" class="btn btn-primary" type="button" (click)="getCustomerEmail()"
+        (click)="LogOut()">Logout
+    </button>
+</nav>
+
+<br>

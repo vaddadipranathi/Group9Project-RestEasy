@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="Container center" id="emptyCart" *ngIf="!isDisplay">
+    <img src="/assets/cart.JPG" alt="no-image " />
+  </div>
+  <div *ngIf="isDisplay">
+
+    <table class="table table-bordered">
+
+      <thead>
+        <tr>
+          <td style="width: 200px;">Product Image</td>
+          <td style="width: 200px;">Food name</td>
+          <td style="width: 350px;">Food Price</td>
+          <td>Quanity</td>
+          <td>Total</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item1 of items">
+          <td><img id="myImg" class="img1" src="{{item1.imageUrl}}" /></td>
+
+          <td>{{item1.foodName}}</td>
+          <td>{{item1.foodPrice}}</td>
+          <td>
+            <div class="form-inline">
+              <button class="btn btn-primary" id={{item1.foodId}} (click)="plus(item1)"><i
+                  class="fa fa-plus"></i></button>
+              {{item1.quantity}}
+              <button class="btn btn-primary" (click)="minus(item1)"><i class="fa fa-minus"></i></button>
+            </div>
+            <br>
+            <div>
+              <button class="btn btn-primary" (click)=" removeCartItem(item1.foodId)"
+                routerLink="/Adigas">Remove</button>
+
+            </div>
+          </td>
+          <td>{{item1.foodPrice * item1.quantity}}</td>
+        </tr>
+        <tr>
+          <td colspan="4"></td>
+          <td>
+            <p>Total Quantity: {{totalqty}}</p>
+            <p>Total Price: {{sum}}</p>
+            <button *ngIf="isTokenPresent()==false" class="btn btn-primary btn-lg right"
+              routerLink="/login">CheckOut</button>
+            <button *ngIf="isTokenPresent()==true" class="btn btn-primary btn-lg right" (click)="sendQuantityPrice()"
+              routerLink="/payment">CheckOut</button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <button *ngIf="decision!=''" class="btn btn-primary" (click)="getFoobyCategoryVeg()" routerLink="/Adigas">Veg
+        Items</button>
+      &nbsp;&nbsp; <button *ngIf="decision!=''" class="btn btn-primary" (click)="getFoobyCategoryNonVeg()"
+        routerLink="/Adigas">Non-veg Items</button>
+    </div>
+    <br><br>
+    <h2 *ngIf="decision!=''">Best Food in {{decision}}</h2><br>
+
+    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let obj of menu">
+      <div class="card" style="width: 100%;border:0px">
+        <img id="myImg" src={{obj.imageUrl}} class="card-img-top" alt="mnb " width="250" height="250">
+        <div class="card-body">
+          <div class="card-text">
+            <p class="card-text"> <b>{{obj.foodName}}</b> - {{obj.foodCategory}}</p>
+            <p class="card-text" style="color: rgb(0, 140, 255);"><b>{{obj.foodPrice| currency:'INR'}}</b></p>
+            <button *ngIf="isTokenPresent()==true" id={{obj.foodId}} [disabled]="isAdded(obj)" (click)="addToCart(obj)"
+              class="btn btn-primary btn-sm"> Add to cart
+              <i class="fa fa-shopping-cart" style="font-size:25px ;color:white"></i></button>
+            <button *ngIf="isTokenPresent()==false" id={{obj.foodId}} [disabled]="isAdded(obj)" routerLink="/login"
+              class="btn btn-primary btn-sm"> Add to cart
+              <i class="fa fa-shopping-cart" style="font-size:25px ;color:white"></i></button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
